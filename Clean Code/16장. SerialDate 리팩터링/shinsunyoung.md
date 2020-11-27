@@ -1,14 +1,5 @@
 # 16장 SerialDate 리팩터링
 
-# TOC
-
-- [Contents](#contents)
-  * [첫째, 돌려보자](#첫째,-돌려보자)
-  * [둘째, 고쳐보자](#둘째,-고쳐보자)
-- [Reference](#reference)
-
-<br>
-
 # Contents
 
 SerialDate는 날짜를 표현하는 자바 클래스이다.
