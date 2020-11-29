@@ -7,7 +7,7 @@ https://www.jfree.org/jcommon 라이브러리의 `SerialDate` 클래스(made by 
 ## 고쳐보기
 * 변경 이력 지우기(이제는 소스 제어 도구를 사용하자)
 * import 문 간결화
-* Javadoc 주석의 HTMP 코드 지우기
+* Javadoc 주석의 HTML 코드 지우기
 * 클래스 선언 시 `Serial`이라는 단어가 부적절함 -> `DayDate`로 변경
 * `MonthConstants`는 상속하지 말고 enum으로 선언
 * `serialVersionUID` 삭제
