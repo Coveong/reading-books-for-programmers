@@ -414,6 +414,8 @@ obj.getA().getB();
 // good
 obj.getA();
 ```
+<br>
+
 
 ## 자바
 
@@ -449,6 +451,8 @@ public static final int는 옛날 기교다 !!!!
 enum을 맘껏 사용하라 !!!!!
 
 int보다 훨씬 더 유연하고 서술적인 강력한 도구다.
+
+<br>
 
 ## 이름
 
