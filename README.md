@@ -58,3 +58,5 @@
 ## 앞으로 읽을 책
 - [함께 자라기 | 애자일로 가는 길](https://book.naver.com/bookdb/book_detail.nhn?bid=14341885) - 김창준
 - [리팩토링 | 코드 품질을 개선하는 객체지향 사고법](https://book.naver.com/bookdb/book_detail.nhn?bid=7047630) - 마틴 파울러
+- [클린 아키텍처 | 소프트웨어 구조와 설계의 원칙](https://book.naver.com/bookdb/book_detail.nhn?bid=15303798) - 로버트 C. 마틴
+- [실용주의 프로그래머 | 숙련공에서 마스터로](https://book.naver.com/bookdb/book_detail.nhn?bid=7467119) - 마틴 파울러
