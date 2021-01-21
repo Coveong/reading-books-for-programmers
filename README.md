@@ -33,7 +33,7 @@
 
 ## 질문
 
-토론하고 싶은 내용이 있거나 질문이 있으면 [이슈](https://github.com/Coveong/reading-books-for-programmers/issues)에 등록해주시면 됩니다.
+책을 읽다가 토론하고 싶은 내용이 있거나 질문이 생기면 [이슈](https://github.com/Coveong/reading-books-for-programmers/issues)에 등록해주시면 됩니다.
 
 
 ## 참여 방법
