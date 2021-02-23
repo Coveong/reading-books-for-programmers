@@ -61,14 +61,14 @@
 ## 다 읽은 책
 - [Clean Code | 클린 코드, 애자일 소프트웨어 장인 정신](https://book.naver.com/bookdb/book_detail.nhn?bid=7390287) - 로버트 C. 마틴
 - [소프트웨어 장인 | 프로페셔널리즘, 실용주의, 자부심](https://book.naver.com/bookdb/book_detail.nhn?bid=9585753) - 산드로 만쿠소
-
-
-## 현재 읽고 있는 책
 - [객체지향의 사실과 오해 | 역할, 책임, 협력 관점에서 본 객체지향](https://book.naver.com/bookdb/book_detail.nhn?bid=9145968) - 조영호
 
 
-## 앞으로 읽을 책
+## 현재 읽고 있는 책
 - [함께 자라기 | 애자일로 가는 길](https://book.naver.com/bookdb/book_detail.nhn?bid=14341885) - 김창준
+
+
+## 앞으로 읽을 책
 - [리팩토링 | 코드 품질을 개선하는 객체지향 사고법](https://book.naver.com/bookdb/book_detail.nhn?bid=7047630) - 마틴 파울러
 - [클린 아키텍처 | 소프트웨어 구조와 설계의 원칙](https://book.naver.com/bookdb/book_detail.nhn?bid=15303798) - 로버트 C. 마틴
 - [실용주의 프로그래머 | 숙련공에서 마스터로](https://book.naver.com/bookdb/book_detail.nhn?bid=7467119) - 마틴 파울러
