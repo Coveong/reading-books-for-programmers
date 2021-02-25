@@ -14,7 +14,7 @@
 
 ### 블록과 들여쓰기
 
-- if문 / esle 문 / while 문 등에 들어가는 블록은 한 줄이어야 한다
+- `if`문 / `esle` 문 / `while` 문 등에 들어가는 블록은 한 줄이어야 한다
 
     → 중첩 구조가 생길만큼 함수가 커져서는 안 된다
     (함수에서 들여쓰기 수준은 1단이나 2단 넘어서면 안됌!)
@@ -64,9 +64,9 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
 }
 ```
 
-- switch 문을 추상 팩토리에 숨겨 아무에게도 보여주지 않는다.
+- `switch` 문을 추상 팩토리에 숨겨 아무에게도 보여주지 않는다.
 (상속 관계 숨긴 후 다른 코드에 노출X)
-- 팩토리는 swtich문을 사용해 적절한 Employee 파생 클래스의 인스턴스 생성
+- 팩토리는 `swtich`문을 사용해 적절한 `Employee` 파생 클래스의 인스턴스 생성
 
 → 다형성으로 인해 실제 파생 클래스의 함수가 실행
 
@@ -89,9 +89,9 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
 ### 많이 쓰는 단항 형식
 
 1. 인수에 질문을 던지는 경우
-    - boolean fileExists("file");
+    - `boolean fileExists("file");`
 2. 인수를 뭔가로 변환해 결과를 반환하는 경우
-    - InputStream fileOpen("file");
+    - `InputStream fileOpen("file");`
 
 → 함수 이름을 지을 떄는 두 경우 분명히 구분하고 일관적인 방식으로 두 형식 사용
 
@@ -104,21 +104,21 @@ public class EmployeeFactoryImpl implements EmployeeFactory {
 
 ### 플래그 인수
 
-- 플래스 인수는 추하다.
-- render(true) → renderForSuite(), renderForSingleTest()
+- 플래그 인수는 추하다.
+- `render(true) → renderForSuite(), renderForSingleTest()`
 
 ### 이항 함수
 
 - 이항 함수는 인수가 1개인 함수보다 이해하기 어렵다. (어떤 코드든 절대로 무시하면 안된다)
 - 이항함수가 적절한 경우도 존재
     - 인수에 자연적인 순서 존재하는 경우!
-    - ex ) Point p = new Point(0, 0);
+    - ex ) `Point p = new Point(0, 0);`
 
 → 가능하면 단한 함수로 변경해야 한다.
 
 ### 삼항 함수
 
-- 순서, 주춤, 부시로 야기되는 문제 두 배 이상 늘어난다.
+- 순서, 주춤, 무시로 야기되는 문제 두 배 이상 늘어난다.
 
 ### 인수 객체
 
@@ -141,3 +141,99 @@ Circle makeCircle(Point center, double radius);
 - 함수의 의도나 인수의 순서와 의도를 제대로 표현하려면 좋은 함수 이름 필수
 - 함수와 인수가 동사/명사 쌍 이루기
 - 함수 이름에 키워드 추가하는 형식
+
+## 부수 효과를 일으키지 마라!
+
+- 부수 효과는 시간적인 결합이나 순서 종속성 초래
+- 시간적인 결합이 필요하다면 함수 이름에 분명히 명시
+
+### 출력 인수
+
+- 인수를 함수의 입력으로 해석
+- 객체 지향 언어세어는 출력 인수를 사용할 필요가 거의 없다 (일반적으로 출력 인수 피하기)
+→ 출력 인수로 사용하라고 설계한 변수 `this` 존재
+
+## 명령과 조회를 분리하라!
+
+- 함수는 수행하거나 답하거나 둘 중 하나만 동작 → 둘다X
+    - 객체 상태 변경
+    - 객체 정보 봔환
+- 명령과 조회를 분리해 혼란 없애기
+
+```java
+if(set("username", "unclebob"))...
+
+//명령과 조회를 분리
+if(attributeExists("username")){
+	setAttribute("username", "unclebob");
+}
+```
+
+## 오류 코드보다 예외를 사용하라!
+
+- 명령 함수에서 오류 코드 반환하는 방식 → 명령/조회 분리 규칙 위반
+
+    ```java
+    if(deletePage(page) == E_OK)//if 문에서 명려을 표현식으로 사용
+    ```
+
+    → 오류 코드 대신 예외를 사용하면 오류 처리 코드가 원래 코드에서 분리되므로 코드가 깔끔!
+
+### Try/Catch 블록 뽑아내기
+
+- `try/catch` 블록은 코드 구조에 혼란 일으키고 정상 동작과 오류 처리 동작 섞어서 추함
+
+→ `try/catch` 블록을 별도 함수로 뽑아내자!(정상 동작과 오류 처리 동작 분리)
+
+```java
+public void delete(Page page){
+	try{
+		deletePageAndAllReferences(page);
+	}
+	catch(Exception e) {
+		logError(e);
+	}
+}
+```
+
+→ `deletePageAndAllReferences` 함수는 예외를 처리하지 않는다.(실제로 페이지 제거 함수)
+
+### 오류 처리도 한 가지 작업이다.
+
+- 오류를 처리하는 함수는 오류만 처리해야 한다.
+- 함수에 키워드 `try`가 있다면 함수를 `try` 문으로 시작해 `catch/finally` 문으로 끝나야 함
+
+### [Error.java](http://error.java) 의존성 자석
+
+- 오류 코드 정의해 반환 클래스 의존성 자석(`Enum`, `class`, ...)
+→ 오류 코드 클래스 변경 시 사용하는 클래스 전부 다시 컴파일 및 배치
+- 오류 코드 대신 예외 사용시 새 예외는 Ecxeption 클래스에서 파생 
+→ 재 컴파일/재배치 없이 새 예외 클래스 추가 가능
+
+## 반복하지 마라!
+
+- 중복은 소프트웨어에서 모든 악의 근원으로 많은 원칙과 기법이 중복을 없애거나 제어할 목적!
+    - 중복을 제거할 목적으로 관계형 DB에 정규 형식
+    - 중복을 제거할 목적으로 객체지향 프로그래밍 코드를 부모 클래스로 몰아 중복 없앰
+    - 구조적 프로그래밍, AOP, COP → 중복 제거 전략
+- 소스 코드에서 중복을 제거하려는 지속적인 노력 !
+
+## 구조적 프로그래밍
+
+- 모든 함수와 함수 내 모든 블록에 입구와 출구 하나만 존재
+- 함수는 `return` 문이 하나!
+- 루프 안에서 `break` `continue` 사용 X, `goto` 절대로 X
+
+→ 함수가 클 때만 이익 제공 작을 때는 `return` `break` `continue` 사용 OK BUT `goto` XXX
+
+## 함수를 어떻게 짜죠?
+
+- 초안을 작성해 코드를 다듬고, 함수를 만들고, 이름을 바꾸고, 중복을 제거하고, 메서드를 줄이고, 순서를 바꾼다
+→ 모든 코드는 항상 단위 테스트를 통과!!
+
+## 결론
+
+- 시스템은 특정 응용 분야 시스템을 기술할 목적으로 프로그래머가 설계한 도메인 특화 언어로 만들어진다.
+    - 함수는 언어에서 동사
+    - 클래스는 언어에서 명사
+- 핵심은 시스템이라는 이야기를 풀어나가는데 있다!!
