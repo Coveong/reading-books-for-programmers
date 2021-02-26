@@ -187,7 +187,7 @@ public class CodeAnalyzer {
 		return lineWidthHistogram.getLinesforWidth(width).size();
 	}
 	
-	private Integer[] getSortedWidth() {
+	private Integer[] getSortedWidths() {
 		Set<Integer> widths = lineWidthHistogram.getWidths();
 		Integer[] sortedWidths = (widths.toArray(new Integer[0]));
 		Arrays.sort(sortedWidths);
