@@ -70,7 +70,6 @@ DRY 원칙 : Don't Repea Yourself  동일 지식을 중복하지 마라.
 ![image-20210411011055267](C:\Users\user.DESKTOP-MH5KDIR.000\AppData\Roaming\Typora\typora-user-images\image-20210411011055267.png)
 
 
-
 Stack이 Vector를 상속받기 때문에 Stack 의 규칙의 Vector의 인터페이스 요소를 통해 추가 삭제될수 있다.
 
 
