@@ -35,7 +35,7 @@ UML과 의존성
 
 의존성 전이
 
-![image-20210405015038542](C:\Users\user.DESKTOP-MH5KDIR.000\AppData\Roaming\Typora\typora-user-images\image-20210405015038542.png)
+![image-20210405015038542](https://user-images.githubusercontent.com/78361650/115144294-e7cd8600-a086-11eb-9627-d47017f30caa.png)
 
 의존성의 종류
 
