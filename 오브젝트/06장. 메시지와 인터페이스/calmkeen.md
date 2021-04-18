@@ -51,7 +51,7 @@
 
 
 
-![image-20210329004749510](C:\Users\user.DESKTOP-MH5KDIR.000\AppData\Roaming\Typora\typora-user-images\image-20210329004749510.png)
+![image-20210329004749510](https://user-images.githubusercontent.com/78361650/115144318-03d12780-a087-11eb-9cc6-d0801059eabb.png)
 
 
 
