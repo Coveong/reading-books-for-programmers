@@ -132,7 +132,7 @@ Super 는  부모 클래스를 가리키도록 설정된 변수이며 일반적�
 
 #### 업캐스팅
 
-![image-20210411144303642](C:\Users\user.DESKTOP-MH5KDIR.000\AppData\Roaming\Typora\typora-user-images\image-20210411144303642.png)
+![image-20210411144303642](https://user-images.githubusercontent.com/78361650/115144246-9ae9af80-a086-11eb-89ce-50c8083b464c.png)
 
 #### 동적 바인딩
 
