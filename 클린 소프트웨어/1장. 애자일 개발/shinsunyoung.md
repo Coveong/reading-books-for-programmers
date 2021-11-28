@@ -318,3 +318,685 @@ TDD를 하게 되면?
 ## 결론
 
 작성한 모든 모듈과 유지보수하는 모든 모듈에 대해 항상 리팩토링 과정을 적용하는 것이 좋다. 여기에 투자하는 시간은 가까운 미래에 다른 사람이나 자신이 들여야 할 수고에 비하면 극히 적은 것이다.
+
+
+
+# 6. 프로그래밍 에피소드
+
+## 볼링 게임
+
+- 게임 규칙의 개요
+  - 프레임
+    - 게임은 10개의 프레임으로 이루어진다.
+    - 각 프레임이 시작할 때마다 핀 10개가 세워지고, 플레이어는 핀을 모두 쓰러트릴 수 있는 두 번의 기회가 주어진다.
+  - 스트라이크
+    - 플레이어가 첫 번째 기회에서 모든 핀을 쓰러트리면 스트라이크이고, 프레임은 끝난다.
+    - 이전 프레임까지의 스코어에 10을 더하고, 다음 2개의 공으로 쓰러뜨린 핀의 개수를 더하여 계산된다.
+    - 10번째 프레임에서 스트라이크가 나오면, 플레이어는 스트라이크의 스코어를 완결 짓기 위해 2개의 공을 더 던진다.
+  - 스페어
+    - 첫 번째에는 모두 쓰러트리지 못했으나, 두 번째에 성공하면 스페어이다.
+    - 이전 프레임까지의 스코어에 10을 더하고, 다음 1개의 공으로 쓰러뜨린 핀의 개수를 더한다.
+    - 10번째 프레임에서 스페어가 나오면, 플레이어는 스페어의 스코어를 완결 짓기 위해 1개의 공을 더 던진다.
+- 게임의 요구사항
+  - 모든 게임의 결과를 저장해야한다.
+  - 팀의 순위를 결정해야 한다.
+  - 매주 열리는 시합에서 승자와 패자를 결정해야 한다.
+  - 각 게임의 스코어를 정확히 기록할 수 있어야 한다.
+
+1. 한 게임의 스코어를 계산한다.
+
+입력 : 10개의 프레임 투구(throw) (투구: 공이 몇 개의 핀을 쓰러트렸는지 알려주는 정수)
+
+출력 : 각 프레임의 스코어
+
+여기서 테스트 코드는 아래와 같이 나온다.
+
+```java
+throwBall(6);
+throwBall(3);
+assertEquals(0, getScore());
+```
+
+UML 다이어그램은 아래와 같이 나온다.
+
+> Game 객체는 Frame 10개의 나열로 이루어져 있다. 각 Frame 객체는 1번, 2번 혹은 3번은 'Throw'를 포함하고 있다.
+
+```
+Game` -10→ `Frame` -1..3→ `Throw
+```
+
+여기서 의존성 사슬의 끝 부터(Throw) 작업하는 것이 테스트할 때 더 쉽다.
+
+하지만 Throw는 핀의 수를 저장하는 것 이외에는 아무 일도 하지 않는다.
+
+→ 데이터 저장소가 아닌 실제 행위를 하는 객체에 집중하는 것이 좋다.
+
+그러면 그 다음 객체인 Frame의 테스트 코드를 작성해보자!
+
+```java
+// TestFrame.java
+public void testAddObeThrow() {
+	Frame f = new Frame();
+	f.add(5);
+	assertEquals(5, f.getScore());
+}
+
+// Frame.java
+getScore()는 있지만, add()는 없는 상태
+```
+
+→ add()가 없기 때문에 컴파일에 실패한다.
+
+```java
+// Frame.java
+public void add(Throw t) {
+}
+```
+
+→ Throw가 없기 때문에 컴파일에 실패한다.
+
+오잉? 그런데 테스트에서는 정수를 넘겨주는데, 여기에서는 객체(Throw)를 파라미터로 받고 있다.
+
+→ 결국 Throw는 int값으로 대체할 수 있는거 아닐까?
+
+```java
+// Frame.java
+public void add(int pins) {
+}
+```
+
+이제 컴파일은 성공, 테스트에는 실패하는 상태가 되었다.
+
+이제 로직을 테스트 성공하게 수정하면 된다!
+
+```java
+// Frame.java
+public class Frame {
+	private int itsScore = 0;
+
+	public int getScore() {
+		return itsScore;
+	}
+
+	public void add(int pins) {
+		itsScore += pins;
+	}
+}
+```
+
+→ 하지만 여기에는 문제가 있다. `add()`의 인자로 11을 넘기게 된다면 어떻게 될까? (최고점은 10이다.) 그리고 `add()`는 스트라이크나 스페어를 처리하지 않는다.
+
+지금 상황에서 Game은 Frame에 의존하고, Frame은 거꾸로 Game에 의존한다.
+
+하지만 Frame을 linked list 형태로 정렬될 수 있다. Frame의 스코어를 얻기 위해 이전 Frame의 스코어를 확인하고, 스페어나 스트라이크가 있을 때 추가되는 공의 개수를 알기 위해 계속 나아가면서 찾으면 된다.
+
+Game을 위한 테스트 케이스를 만들자!
+
+→ 지금 Frame에 대한 테스트 케이스를 만들고 있는데?
+
+→ Game 테스트 케이스에 Frame의 Linked list가 필요하다는 사실을 입증해야한다. Frame에 대한 작업을 멈추고 Game에 대한 작업을 시작하자.
+
+```java
+// TestGame.java
+public class TestGame extends TestCase {
+	public TestGame(String name) {
+		super(name)
+	}
+
+	public void testOneThrow() {
+		Game g = new Game();
+		g.add(5)
+		assertEquals(5, g.score());
+	}
+}
+```
+
+→ 여기에는 리스트가 없는데?
+
+```java
+// Game.java
+public class Game {
+	public int score() {
+		return 0;
+	}
+
+	public void add(int pins) {
+	}
+}
+```
+
+→ 이렇게 하면 테스트가 실패함! 이제 테스트를 통과하게 만들려면
+
+```java
+// Game.java
+public class Game {
+	private int itsScore = 0;
+
+	public int score() {
+		return itsScore;
+	}
+
+	public void add(int pins) {
+		itsScore += pins;
+	}
+}
+```
+
+→ 테스트를 통과하는 것까지는 ㅇㅋ. 그런데 도대체 Frame의 Linked list는 왜 필요한 것?
+
+→ 스트라이크와 스페어를 처리하는 테스트를 작성하면 필요하게 된다. 하지만 지금 당장 테스트에 대해서는 스트라이크와 스페어를 처리하지 않으므로 작성하지 않은 것.
+
+스페어가 없는 2개의 Throw를 테스트하는 코드
+
+```java
+// TestGame.java
+public void testThrowsNoMark() {
+	Game g = new Game();
+	g.add(5);
+	g.add(4);
+	assertEquals(9, g.score());
+}
+```
+
+통과함!
+
+각 프레임에 대해 스코어를 가져오는 테스트 코드
+
+```java
+// TestGame.java
+public void testFourThrowsNoMark() {
+	Game g = new Game();
+	g.add(5);
+	g.add(4);
+	g.add(7);
+	g.add(2);
+	assertEquals(18, g.score());
+	assertEquals(9, g.scoreForFrame(1));
+	assertEquals(18, g.scoreForFrame(2));
+} 
+```
+
+→ `scoreForFrame()`이 없기 때문에 컴파일이 실패한다.
+
+```java
+// Game.java
+public int scoreForFrame(int frame) {
+	return 0;
+}
+```
+
+→ 컴파일엔 성공하지만, 테스트는 실패한다.
+
+테스트를 통과하게 하려면
+
+1. Frame 객체를 만든다.
+2. **Game 내부에 정수 배열을 만들고, add를 호출할 때마다 배열에 새 정수를 추가한다.**
+
+```java
+// Game.java
+public class Game {
+	private int itsScore = 0;
+	private int[] itsThrows = new int[21];
+	private int itsCurrentThrow = 0;
+
+	public int score() {
+		return itsScore;
+	}
+
+	public void add(int pins) {
+		itsThrows[itsCurrentThrow++] = pins; // add
+		itsScore += pins;
+	}
+
+	public int scoreForFrame(int frame) { // add
+		int score = 0;
+		for (int ball = 0; frame > 0 && (ball < itsCurrentThrow);
+					ball += 2, frame--) {
+						scroe += itsThrows[ball] + itsThrows[ball + 1];
+				}
+				return score;
+	}
+}
+```
+
+→ 동작하지만, 이 코드는 문제점이 있다.
+
+<이 코드의 문제점>
+
+1. 알아보기 어렵다.
+2. Game이 단일 책임 원칙을 위반하고 있다.
+   - Throw를 받고 프레임의 스코어를 기록하는 Scorer 객체를 만드는 것이 더 낫지 않나?
+
+→ 일단 모든걸 자리잡게 하고 SRP를 논해보자, 루프를 먼저 단순화해보자.
+
+```java
+// Game.java
+public int scoreForFrame(int theFrame) {
+	int ball = 0;
+	int score = 0;
+	for (int currentFrame = 0; currentFrame < theFrame; currentFrame++) {
+		score += itsThrows[ball++] + itsThrows[ball++];
+	}
+
+	return score;
+}
+```
+
+→ 하지만 이 코드는 스페어, 스트라이크에 대해서는 제대로 동작하지 않는다. 또한 컴파일러에 따라 순서 문제가 생길 수도 있다.
+
+```java
+// Game.java
+public int scoreForFrame(int theFrame) {
+	int ball = 0;
+	int score = 0;
+	for (int currentFrame = 0; currentFrame < theFrame; currentFrame++) {
+		int firstThrow = itsThrows[ball++];
+		int secondThrow = itsThrows[ball++];
+		score += firstThrow + secondThrow;
+	}
+
+	return score;
+}
+```
+
+이제 스페어를 처리해보자! 그 전에, 테스트를 리팩토링해보자
+
+```java
+// TestGame.java
+public class TestGame extends TestCase {
+	public TestGame(String name) {
+		super(name)
+	}
+
+	private Game g; // 추가해서 게임 생성하는 중복 코드가 들어가지 않게!
+	
+	public void setUp() {
+		g = new Game();
+	}
+
+	public void testOneThrow() {
+		g.add(5) // 이렇게!
+		assertEquals(5, g.score());
+	}
+
+	// ...
+}
+```
+
+스페어 처리 테스트 케이스
+
+```java
+// TestGame.java
+public void testSimpleSpare() {
+	g.add(3);
+	g.add(7);
+	g.add(3);
+	assertEquals(13, g.scoreForFrame(1));
+}
+```
+
+→ 테스트에 실패한다.
+
+```java
+// Game.java
+public int scoreForFrame(int theFrame) {
+	int ball = 0;
+	int score = 0;
+	for (int currentFrame = 0; currentFrame < theFrame; currentFrame++) {
+		int firstThrow = itsThrows[ball++];
+		int secondThrow = itsThrows[ball++];
+		score += firstThrow + secondThrow;
+
+		// 스페어일 경우에 다음 프레임의 첫 번째 Throw의 점수를 추가로 저장한다.
+		if (frameScore == 10) {
+			score += frameScore + itsThrows[ball++];
+		} else {
+			score += frameScore;
+		}
+	}
+
+	return score;
+}
+```
+
+→ 이렇게 하면 성공한다.
+
+하지만 공의 개수를 증가시키는 부분이 저기에 있다면 안될 것 같은데?
+
+```java
+// TestGame.java
+public void testSimpleFrameAfterSpare() {
+	g.add(3);
+	g.add(7);
+	g.add(3);
+	g.add(2);
+	assertEquals(13, g.scoreForFrame(1));
+	assertEquals(18, g.score());
+}
+```
+
+무언가 로직이 잘못되었다. score()를 볼까??
+
+```java
+// Game.java
+public int score() {
+	return itsScore;
+}
+```
+
+→ 게임은 실제 스코어가 아니라, 넘어뜨린 핀수의 합을 반환하는 것 뿐이다. score는 현재 프레임으로 scoreForFrame()을 호출해야한다.
+
+그러면 현재 핀을 가져오게 바꾸어보자
+
+```java
+// Game.java
+private int itsCurrentFrame = 1;
+private boolean firstThrow = true;
+
+public int getCurrentFrame() {
+	return itsCurrentFrame;
+}
+
+public void add(int pins) {
+	itsThrow[itsCurrentThrow++] = pins;
+	itsScore += pins;
+	adjustCurrentFrame();
+}
+
+private void adjustCurrentFrame() {
+	if (forstThrow == true) {
+		firstThrow = false;
+	} else {
+		firstThrow = true;
+		itsCurrentFrame++;
+	}
+}
+// TestGame.java
+public void testTwoThrowsNoMark() {
+	g.add(5);
+	g.add(4);
+	assertEquals(9, g.score());
+	assertEquals(2, g.getCurrentFrame());
+}
+
+public void testFourthorwsNoMark() {
+	g.add(5);
+	g.add(4);
+	g.add(7);
+	g.add(2);
+	assertEquals(18, g.score());
+	assertEquals(9, g.scoreForFrame(1));
+	assertEquals(9, g.scoreForFrame(2));
+	assertEquals(3, g.getCurrentFrame());
+}
+```
+
+→ 이제 잘 동작한다. getCurrentFrame을 스페어가 나오는 2개의 테스트로 시험해보자
+
+```java
+// TestGame.java
+public void testSimpleSpare() {
+	g.add(3);
+	g.add(7);
+	g.add(3);
+	assertEquals(13, g.scoreForFrame(1));
+	**assertEquals(2, g.getCurrentFrame());**
+}
+
+public void testSimpeFrameAfterSpare() {
+	g.add(3);
+	g.add(7);
+	g.add(3);
+	g.add(2);
+	assertEquals(13, g.scoreForFrame(1));
+	assertEquals(18, g.scoreForFrame(2));
+	**assertEquals(3, g.getCurrentFrame());**
+}
+```
+
+그리고 score()를 바꿔보자
+
+```java
+// TestGame.java 
+public void testSimpeFrameAfterSpare() {
+	g.add(3);
+	g.add(7);
+	g.add(3);
+	g.add(2);
+	assertEquals(13, g.scoreForFrame(1));
+	assertEquals(18, g.scoreForFrame(2));
+	**assertEquals(18, g.score());**
+	assertEquals(3, g.getCurrentFrame());
+}
+// Game.java 
+public int score() {
+	return scroeForFrame(getCurrentFrame() - 1);
+}
+```
+
+→ 하지만 이렇게 하면 실패하는 테스트 케이스가 있다.
+
+```java
+// TestGame.java 
+public void testOneThrow() {
+	g.add(5);
+	assertEquals(5, g.score());
+	assertEquals(1, g.getCurrentFrame());
+}
+```
+
+→ 이 코드에서는 scoreForFrame(0)을 부르고 있기 때문이다.
+
+→ 음 ... 하지만 끝나지 않은 프레임에서 호출할 일은 없다. 즉, 중요하지 않은 테스트 케이스인 것.
+
+→ 이 테스트 케이스는 목적에 부합한 기능을 하지 않다고 생각하고 삭제.
+
+이제 스트라이크를 테스트하는 코드를 작성해보자!
+
+```java
+// TestGame.java 
+public void testSimpleStrike() {
+	g.add(10);
+	g.add(3);
+	g.add(6);
+	assertEquals(19, g.scoreForFrame(1));
+	assertEquals(28, g.score());
+	assertEquals(3, g.getCurrentFrame());
+}
+```
+
+이걸 통과하도록 만들어보자
+
+```java
+// Game.java
+
+public class Game {
+	public void add(int pins) {
+		itsThrows[itsCurrentThrow++] = pins;
+		itsScore += pins
+		adjustCurrentFrame(**pins**);
+	}
+
+	private void adjustCurrentFrame(**int pins**) {
+	if (forstThrow == true) {
+		if (pins == 10) { // 스트라이크
+			itsCurrentFrame++;
+		} else {
+			firstThrow = false;
+		}
+	} else {
+		firstThrow = true;
+		itsCurrentFrame++;
+	}
+
+	public int scoreForFrame(int theFrame) {
+		int ball = 0;
+		int score = 0;
+		for (int currentFrame = 0; currentFrame < theFrame; currentFrame++) {
+			int firstThrow = itsThrows[ball++];
+
+			**if (firstThrow == 10) { // 스트라이크
+				score += 10 + itsThrows[ball] + itsThrows[ball + 1];
+			} else {**
+				int secondThrow = itsThrows[ball++];
+				score += firstThrow + secondThrow;
+		
+				// 스페어일 경우에 다음 프레임의 첫 번째 Throw의 점수를 추가로 저장한다.
+				if (frameScore == 10) {
+					score += frameScore + itsThrows[ball++];
+				} else {
+					score += frameScore;
+				}
+			**}**
+		}
+	
+		return score;
+	}
+}
+```
+
+테스트를 통과한다!
+
+이제 퍼펙트 게임의 스코어를 기록하는지 확인해보자
+
+```java
+// TestGame.java 
+public void testPerfectGame() {
+	for (int i = 0; i < 12; i++) {
+			g.add(10);
+	}
+	assertEquals(300, g.score());
+	assertEquals(10, g.getCurrentFrame());
+}
+```
+
+→ 현재 프레임이 12까지 증가하기 때문에 스코어가 330이 나오고, 테스트가 실패한다.
+
+```java
+// Game.java
+private void adjustCurrentFrame(**int pins**) {
+	if (forstThrow == true) {
+		if (pins == 10) { // 스트라이크
+			itsCurrentFrame++;
+		} else {
+			firstThrow = false;
+		}
+	} else {
+		firstThrow = true;
+		itsCurrentFrame++;
+	}
+	itsCurrentFrame = Math.min(11, itsCurrentFrame); // getCurrentFrame에서 1을 빼기 때문에 10번째가 아닌 9번째 프레임의 스코어를 준다. 즉, 11로 제한해야하는 것이다.
+}
+// TestGame.java 
+public void testPerfectGame() {
+	for (int i = 0; i < 12; i++) {
+			g.add(10);
+	}
+	assertEquals(300, g.score());
+	assertEquals(11, g.getCurrentFrame());
+}
+```
+
+오히려 ... Throw 말고 Game부터 하는게 좋았을 수도 있다.
+
+(하향식. 테스트우선 설계!)
+
+이제 리팩토링을 하면~! (Scorer를 추가하고, 코드를 읽기 쉽게 바꾸자!)
+
+```java
+// Game.java
+public class Game {
+	private int itsCurrentFrame = 0;
+	private boolean firstThrowInFrame = true;
+	private Scorer itsScorer = new Scorer();
+
+	public int score() {
+		return scroeForFrame(itsCurrentFrame);
+	}
+
+	public void add(int pins) {
+		itsScorer.addThrow(pins); // 책임을 Scorer에게 넘긴다.
+		adjustCurrentFrame(pins);
+	}
+
+	private void adjustCurrentFrame(int pins) {
+		if (lastBallInFrame(pins)) {
+			advanceFrame();
+		} else {
+			firstThrowInFrame = false;
+		}
+	}
+
+	private boolean lastBallInFrame(int pins) {
+		return strike(pins) || !firstThrowInFrame;
+	}
+
+	private boolean strike(int pins) {
+		return (firstThrowInFrame && pins == 10);
+	}
+
+	private void advanceFrame() {
+		itsCurrentFrame = Math.min(10, itsCurrentFrame + 1);
+	}
+
+	public int scoreForFrame(int theFrame) {
+		return itsScorer.scoreForFrame(threFrame);
+	}
+}
+// Scorer.java
+public class Scorer {
+	private int ball;
+	private int[] itsThrows = new int[21];
+	private int itsCurrentThrow = 0;
+
+	public void addThrow(int pins) {
+		itsThrows[itsCurrentThrow++] = pins;
+	}
+
+	public int scoreForFrame(int theFrame) {
+		ball = 0;
+		int score = 0;
+		for (int currentFrame = 0; currentFrame < theFrame; currentFrame++) {
+			if (strike()) {
+				score += 10 + nextTwoBallsForStrike();
+				ball++;
+			} else if (spare()) {
+				scroe += 10 + nextBallForSpare();
+				ball += 2;
+			} else {
+				score += twoBallsInFrame();
+				ball += 2;
+			}
+		}
+		return score;
+	}
+
+	private boolean strike() {
+		return itsThrows[ball] == 10;
+	}
+
+	private boolean spare() {
+		return (itsThrows[ball] + itsThrows[ball + 1]) == 10;
+	}
+
+	private int nextTwoBallsForStrike() {
+		return itsThrows[ball + 1] + itsThrows[ball + 2];
+	}
+
+	private int nextBallForSpare() {
+		return itsThrows[ball + 2];
+	}
+
+	private int twoBallsInFrame() {
+		return itsThrows[ball] + itsThrows[ball + 1];	
+	}
+}
+```
+
+## 결론
+
+객체 지향 설계를 모든 애플리케이션에 적용하지 않아도 괜찮다.
+
+다이어그램은 때로는 불필요할 때도 있다. (확인할 코드 없이 다이어그램을 만들고, 그것을 따르려고 할 때에)
+
+테스트를 먼저 작성하여 작은 단계를 밟아나가면서 최적의 설계를 개선하자!
