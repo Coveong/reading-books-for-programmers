@@ -199,3 +199,148 @@ interface Connection {
 ## 결론
 
 책임을 찾고 하나씩 분리하는 것이 설계에서 하는 일의 대부분이다. 이후에 논의할 나머지 원칙들에서도 어떤 식으로든 이 문제로 돌아온다.
+
+
+
+
+
+# 9. 개방 폐쇄 원칙 (OCP)
+
+## 개방 폐쇄 원칙 (OCP)
+
+> 소프트웨어 개체(클래스, 모듈, 함수 등)는 확장에는 열려 있어야 하고, 수정에는 닫혀 있어야 한다.
+
+## 상세 설명
+
+1. 확장에 대해 열려 있다.
+   - 애플리케이션의 요구사항이 변경될 때, 변경에 맞게 새로운 행위를 추가해 모듈을 확장할 수 있다.
+2. 수정에 대해 닫혀 있다.
+   - 모듈의 행위를 확장하는 것이 소스 코드나 바이너리 코드의 변경을 초래하지 않는다.
+
+어떻게 소스 코드를 변경하지 않고도 그 모듈의 행위를 바꾸는 일이 가능할까?
+
+어떻게 모듈을 변경하지 않을 채로, 모듈이 하는 일을 변경할 수 있을까?
+
+## 해결책은 추상화다
+
+모듈은 추상화를 조작할 수 있다. 고정된 추상화에 의존하기 때문에 수정에 대해 닫혀 있을 수 있다. 그 모듈의 행위는 추상화의 새 파생 클래스를 만듦으로써 확장이 가능하다.
+
+Client → Server
+
+[개방 폐쇄 원칙에 어긋난다.]
+
+→ Client 객체가 다른 서버 객체를 사용하게 하려면, Client 클래스가 새로운 서버 클래스를 지정해도록 변경해야 한다.
+
+Client → (interface) Client Interface ← Server
+
+[개방 폐쇄 원칙을 따른다.]
+
+→ Client 객체가 다른 서버의 클래스를 사용하게 하려면, ClientInterface 클래스의 새 파생 클래스를 생성하면 된다. Client 클래스는 변경되지 않은 채로 남는다.
+
+테템플릿 메서드 패턴 기반 클래스는 개방 폐쇄 원칙을 따른다.
+
+## Shape 애플리케이션
+
+```java
+// shape.h
+enum ShapeType {circle, square}
+struct Shpae {
+	ShapeType itsType;
+}
+
+// circle.h
+struct Circle {
+	ShapeType itsType;
+	double itsRadius;
+	Point itsCenter;
+}
+
+void DrawCircle(struct Circle*)
+
+// square.h
+struct Square{
+	ShapeType itsType;
+	double itsSide;
+	Point itsTopLeft;
+}
+
+void DrawSquare(struct Square*);
+
+// drawAllShapes.cc
+typedef struct Shape *ShapePointer;
+
+void DrawAllShapes(ShapePointer list[], int n) {
+	int i;
+	for (i = 0; i < n; i++) {
+		struct Shape* s = lists[i];
+		switch (s -> itsType) {
+			case square:
+				DrawSquare((struct Square*) s);
+				break;
+			case circle:
+				DrawCircle((struct Circle*) s);
+				break;
+		}
+	}
+}
+```
+
+[OCP를 따르지 않는다.]
+
+- 새롭게 그려야할 모든 도형에 대해 함수를 수정해야한다.
+  - Triangle이 추가되면 Shape, Square, Circle, DrawAllShapes를 재컴파일, 재배포를 해야한다.
+- 이런 함수에는 switch/case나 if/else 같은 사슬이 없어야 한다.
+
+### OCP 따르기
+
+```java
+class Shape {
+	public : virtual void Draw() const = 0;
+}
+
+class Square : public Shape {
+		public : virtual void Draw() const
+}
+
+class Circle : public Shape {
+		public : virtual void Draw() const
+}
+
+void DrawAllShapes(vector<Shape*> & list) {
+	vector<Shape*> :: iterator i;
+	for (i = list.begin(); i != list.end(); i++)
+		(*i) -> Draw();
+}
+```
+
+[OCP를 따른다.]
+
+- 새로운 도형을 그리고 싶다면 Shape의 새로운 파생 클래스를 만들면 된다.
+- 경직성이 없다.
+  - 수정해야하는 소스 모듈도 없고, 하나만 제외하면 재빌드되어야 하는 바이너리 모듈도 없다.
+- 부동성이 없다.
+  - 재사용이 가능하다.
+
+## 그래, 거짓말했다
+
+사실 이 예는 터무니 없는 소리이다. Circle이 모두 Square 앞에 그려지도록 결정한다고 했을때, 이런 변경에 대해 닫혀 있지 않다.
+
+## 예상과 '자연스러운' 구조
+
+모듈이 얼마나 닫혀 있든지, 열려있든지 간에 변경은 항상 존재한다. 모든 상황에서 자연스러운 모델은 없다.
+
+폐쇄는 완벽할 수 없기 때문에, 전략적이여야 한다.
+
+## '올가미' 놓기
+
+추상화가 실제로 필요할 때까지 기다렸다가 올가미를 놓는 편이 차라리 낫다.
+
+첫 번째 총알은 그냥 맞고, 그 총에서 쏘는 다른 총알에 대해서는 확실히 보호하자!
+
+## 폐쇄를 위해 '데이터 주도적' 접근 방식 사용하기
+
+Shpae의 파생 클래스가 서로에 대해 아는 것을 막는다면, 테이블 주도적 접근 방식을 사용할 수 있다.
+
+## 결론
+
+많은 면에서 OCP는 객체 지향 설계의 심장이다. 어설픈 추상화를 피하는 일은 추상화 자체만큼이나 중요하다.
