@@ -65,7 +65,7 @@
 
 
 ## 현재 읽고 있는 책
-- [클린 소프트웨어 | 애자일 원칙과 패턴, 그리고 실천 방법](https://book.naver.com/bookdb/book_detail.nhn?bid=7467119) - 로버트 C. 마틴
+- [클린 소프트웨어 | 애자일 원칙과 패턴, 그리고 실천 방법](http://www.yes24.com/Product/Goods/39497990) - 로버트 C. 마틴
 
 ## 앞으로 읽을 책
 - [오브젝트 디자인 스타일 가이드 | 팀의 생산성을 높이는 고품질 객체지향 코드 작성법](https://book.naver.com/bookdb/book_detail.nhn?bid=16416218) - 마티아스 노박
