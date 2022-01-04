@@ -64,7 +64,7 @@
 - [실용주의 프로그래머 | 숙련공에서 마스터로](https://book.naver.com/bookdb/book_detail.nhn?bid=7467119) - 마틴 파울러
 
 
-## 현재 읽고 있는 책
+## 보류 중인 책
 - [클린 소프트웨어 | 애자일 원칙과 패턴, 그리고 실천 방법](http://www.yes24.com/Product/Goods/39497990) - 로버트 C. 마틴
 
 ## 앞으로 읽을 책
