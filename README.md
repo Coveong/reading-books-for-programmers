@@ -51,8 +51,9 @@
 📧 coveong@gmail.com
 
 
-
 # 진행상황 🌷
+> 정리 내용들은 책을 읽으면서 스터디원들이 새로 알게된 내용이나, 중요하다고 생각하는 내용을 정리한 글입니다. 따라서 전체 내용을 모두 담고 있지 않습니다.  
+> 또한, 요청에 따라 파일은 언제든 삭제될 수 있습니다.
 
 ## 다 읽은 책
 - [Clean Code | 클린 코드, 애자일 소프트웨어 장인 정신](https://book.naver.com/bookdb/book_detail.nhn?bid=7390287) - 로버트 C. 마틴
@@ -63,8 +64,14 @@
 - [클린 아키텍처 | 소프트웨어 구조와 설계의 원칙](https://book.naver.com/bookdb/book_detail.nhn?bid=15303798) - 로버트 C. 마틴
 - [실용주의 프로그래머 | 숙련공에서 마스터로](https://book.naver.com/bookdb/book_detail.nhn?bid=7467119) - 마틴 파울러
 
+## 읽고 있는 책
+- [가상 면접 사례로 배우는 대규모 시스템 설계 기초](https://book.naver.com/bookdb/book_detail.nhn?bid=20756755) - 알렉스 쉬
+- [코틀린 동시성 프로그래밍 | 예제로 배우는 코틀린 동시성](https://book.naver.com/bookdb/book_detail.nhn?bid=16364412) - 미구엘 엔젤 카스티블랑코 토레스
+- [읽기 좋은 코드가 좋은 코드다 | 더 나은 코드를 작성하는 간단하고 실전적인 테크닉](https://book.naver.com/bookdb/book_detail.nhn?bid=6871807) - 더스틴 보즈웰, 트레버 파우커
 
-## 보류 중인 책
+
+
+## 보류한 책
 - [클린 소프트웨어 | 애자일 원칙과 패턴, 그리고 실천 방법](http://www.yes24.com/Product/Goods/39497990) - 로버트 C. 마틴
 
 ## 앞으로 읽을 책
