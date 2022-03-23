@@ -63,13 +63,12 @@
 - [오브젝트 | 코드로 이해하는 객체지향 설계](https://book.naver.com/bookdb/book_detail.nhn?bid=15007773) - 조영호
 - [클린 아키텍처 | 소프트웨어 구조와 설계의 원칙](https://book.naver.com/bookdb/book_detail.nhn?bid=15303798) - 로버트 C. 마틴
 - [실용주의 프로그래머 | 숙련공에서 마스터로](https://book.naver.com/bookdb/book_detail.nhn?bid=7467119) - 마틴 파울러
-
-## 읽고 있는 책
 - [가상 면접 사례로 배우는 대규모 시스템 설계 기초](https://book.naver.com/bookdb/book_detail.nhn?bid=20756755) - 알렉스 쉬
 - [코틀린 동시성 프로그래밍 | 예제로 배우는 코틀린 동시성](https://book.naver.com/bookdb/book_detail.nhn?bid=16364412) - 미구엘 엔젤 카스티블랑코 토레스
 - [읽기 좋은 코드가 좋은 코드다 | 더 나은 코드를 작성하는 간단하고 실전적인 테크닉](https://book.naver.com/bookdb/book_detail.nhn?bid=6871807) - 더스틴 보즈웰, 트레버 파우커
 
-
+## 읽고 있는 책
+- [한 권으로 읽는 컴퓨터 구조와 프로그래밍](https://book.naver.com/bookdb/book_detail.nhn?bid=18866504) - 조너선 스타인하트
 
 ## 보류한 책
 - [클린 소프트웨어 | 애자일 원칙과 패턴, 그리고 실천 방법](http://www.yes24.com/Product/Goods/39497990) - 로버트 C. 마틴
