@@ -84,7 +84,7 @@ ex) a AND b 라는 연산은 NOT(NOT a OR NOT b)와 같다라는 증명.
 
 ### 2진수 덧셈
 
-![image-20220418235751184](C:\Users\user.DESKTOP-MH5KDIR.000\AppData\Roaming\Typora\typora-user-images\image-20220418235751184.png)
+![image-20220418235751184](https://user-images.githubusercontent.com/78361650/163841155-7155bca7-9f17-46c1-8e8f-bf6b3ffc900d.png)
 
 이정도는 할거라 생각한다.
 
@@ -117,7 +117,8 @@ ex) a AND b 라는 연산은 NOT(NOT a OR NOT b)와 같다라는 증명.
 
  순환올림을 처리하기 위한 하드웨어 추가, 비용문제로 사용하지 않는다.
 
-![image-20220419001241198](C:\Users\user.DESKTOP-MH5KDIR.000\AppData\Roaming\Typora\typora-user-images\image-20220419001241198.png)
+
+![image-20220419001241198](https://user-images.githubusercontent.com/78361650/163841111-16fde3bc-0ba5-4c67-b3a1-5855632efda5.png)
 
 #### 2의 보수
 
