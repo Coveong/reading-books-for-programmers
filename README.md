@@ -68,11 +68,11 @@
 - [읽기 좋은 코드가 좋은 코드다 | 더 나은 코드를 작성하는 간단하고 실전적인 테크닉](https://book.naver.com/bookdb/book_detail.nhn?bid=6871807) - 더스틴 보즈웰, 트레버 파우커
 
 ## 읽고 있는 책
-- [한 권으로 읽는 컴퓨터 구조와 프로그래밍](https://book.naver.com/bookdb/book_detail.nhn?bid=18866504) - 조너선 스타인하트
+- [엘레강트 오브젝트 | 새로운 관점에서 바라본 객체지향](https://book.naver.com/bookdb/book_detail.nhn?bid=17651286) - Yegor Bugayenko
 
 ## 보류한 책
 - [클린 소프트웨어 | 애자일 원칙과 패턴, 그리고 실천 방법](http://www.yes24.com/Product/Goods/39497990) - 로버트 C. 마틴
+- [한 권으로 읽는 컴퓨터 구조와 프로그래밍](https://book.naver.com/bookdb/book_detail.nhn?bid=18866504) - 조너선 스타인하트
 
 ## 앞으로 읽을 책
 - [오브젝트 디자인 스타일 가이드 | 팀의 생산성을 높이는 고품질 객체지향 코드 작성법](https://book.naver.com/bookdb/book_detail.nhn?bid=16416218) - 마티아스 노박
-- [엘레강트 오브젝트 | 새로운 관점에서 바라본 객체지향](https://book.naver.com/bookdb/book_detail.nhn?bid=17651286) - Yegor Bugayenko
