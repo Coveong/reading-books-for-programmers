@@ -116,7 +116,7 @@
 > TODO : 요구사항을 이해하고 모호함을 없애기
 > 
 
-![Untitled](img/hongeunbeen/1.png)
+![Untitled](img/1.png)
 
 - 모바일 앱, 웹 앱 둘다 지원해야 함
 - 새로운 포스트 올리고, 다른 친구의 뉴스 피드 보는 기능
@@ -137,11 +137,11 @@
         - 사용자의 뉴스 피드 : 친구들의 소프트를 시간 역순으로 정렬해 만듬
 - **피드 발행**
     
-    ![Untitled](img/hongeunbeen/2.png)
+    ![Untitled](img/2.png)
     
 - **피드 생성**
     
-    ![Untitled](img/hongeunbeen/3.png)
+    ![Untitled](img/3.png)
     
 
 ### [ 3단계 - 상세 설계 ]
@@ -157,7 +157,7 @@
 > 
 1. **피드 발행**
     
-    ![Untitled](img/hongeunbeen/4.png)
+    ![Untitled](img/4.png)
     
     1. 그래프 데이터베이스에서 친구 id 목록 추천
     2. 사용자 정보 캐시에서 친구 데이터 추출 (캐시 없다면 데이터베이스에서)
@@ -165,7 +165,7 @@
     4. 뉴스 피드는 DB없이 캐시에만 저장함
 2. **뉴스 피드 가져오기**
     
-    ![Untitled](img/hongeunbeen/5.png)
+    ![Untitled](img/5.png)
     
     1. 사용자 로드밸런서 Public IP로 접속
     2. 로드 밸런서 Private IP로 서버 접속
