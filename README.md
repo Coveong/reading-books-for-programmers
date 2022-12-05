@@ -70,7 +70,8 @@
 - [단위 테스트 | 생산성과 품질을 위한 단위 테스트 원칙과 패턴](http://www.yes24.com/Product/Goods/104084175) - 블라디미르 코리코프
 
 ## 읽고 있는 책
-- TBD
+- [Operating System Concepts 10th Ed](http://www.yes24.com/Product/Goods/78225791) - Siberschatz et. al
+  - [인프런 - 운영체제 공룡책 강의](https://www.inflearn.com/course/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B3%B5%EB%A3%A1%EC%B1%85-%EC%A0%84%EA%B3%B5%EA%B0%95%EC%9D%98#curriculum)와 함께
 
 ## 보류한 책
 - [클린 소프트웨어 | 애자일 원칙과 패턴, 그리고 실천 방법](http://www.yes24.com/Product/Goods/39497990) - 로버트 C. 마틴
