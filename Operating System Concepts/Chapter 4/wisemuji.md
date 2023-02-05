@@ -87,3 +87,16 @@ public class ThreadExample3 {
 예를 들어
 - S=0.25, N=2, speedup=1.6
 - S=0.25, N=4, speedup=2.28
+
+# Chapter 4. Thread & Concurrency (Part 2)
+
+## 스레드 타입
+- 유저 스레드: 커널 위에서 지원되고 커널 지원 없이도 관리된다.
+- 커널 스레드: 운영체제에서 직접 지원하고 관리한다.
+- 유저와 커널 스레드는 다양한 관계 모델이 있을 수 있다.
+  - Many to One model
+  - One to One model
+  - Many to Many model
+
+## PThread
+실습 진행
