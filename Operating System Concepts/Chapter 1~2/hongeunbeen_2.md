@@ -2,7 +2,8 @@
 
 ## 컴퓨터 시스템
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/37995685/217673222-fc01174c-d7d3-4a61-a60f-2a886cc6cf41.png)
+
 
 - hardware
 - OS
@@ -21,7 +22,7 @@ system programs와 appliation programs에 대한 인터페이스를 제공해줌
 
 ## Classic Computer System
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%201.png)
+![Untitled 1](https://user-images.githubusercontent.com/37995685/217673234-b96b525d-0f68-4553-8aa1-0057c8d9dddf.png)
 
 - 한 개 또는 여러개의 CPU
 - 여러개의 디바이스와 연결할 수 있는 common bus
@@ -42,7 +43,8 @@ HDD에 있는 OS를 메모리에 로드하는 역할을 하는 프로그램을 �
 
 ## Interrupts
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%202.png)
+![Untitled 2](https://user-images.githubusercontent.com/37995685/217673254-69ff516a-f699-4f10-856f-b47f296ae4de.png)
+
 
 키보드같은 I/O 디바이스에서 입력값을 CPU에 전달할 때 interrupts라는 방법으로 알려줌
 
@@ -55,7 +57,8 @@ hardwre가 언제라도 버스를 통해 인터럽트를 트리거 시킬 수 �
 
 비휘발성 저장 장치는 용량과 접근 속도에 따라서 여러개의 계층으로 존재함
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%203.png)
+![Untitled 3](https://user-images.githubusercontent.com/37995685/217673265-659bb84f-ac0f-4c1f-b1ec-bf8caf257073.png)
+
 
 - registers
     - CPU안에 있는 공간으로 제일 빠름
@@ -75,7 +78,7 @@ hardwre가 언제라도 버스를 통해 인터럽트를 트리거 시킬 수 �
 
 OS 코드를 구현할 때 거의 대부분이 managing I/O임… (커널 개발은 안정화 되어 있음)
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%204.png)
+![Untitled 4](https://user-images.githubusercontent.com/37995685/217673289-eb5ec760-94cb-45b6-9826-27d857c87c78.png)
 
 - thread of execution
     - 실행되는 과정으로 CPU가 이를 가지고 있음
@@ -96,13 +99,13 @@ OS 코드를 구현할 때 거의 대부분이 managing I/O임… (커널 개발
 
 ## Symmetric multiprocessing (SMP)
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%205.png)
+![Untitled 5](https://user-images.githubusercontent.com/37995685/217673307-ee920ead-aa04-4861-8415-68340091b62a.png)
 
 메모리는 한 개지만 연결되어 있는 CPU가 여러개로 각각의 registers와 cache를 가짐
 
 ## Multi-core design
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%206.png)
+![Untitled 6](https://user-images.githubusercontent.com/37995685/217673320-f2bbdc5e-4a56-4f72-b304-5aa7a79de413.png)
 
 CPU 자체를 여러개 두는 것은 비용이 많이 발생하기 때문에 한개의 CPU(같은 프로세스 칩)안에 CPU core만 따로 회로를 구성함
 
@@ -110,7 +113,7 @@ CPU 자체를 여러개 두는 것은 비용이 많이 발생하기 때문에 �
 
 ## Multiprogramming
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%207.png)
+![Untitled 7](https://user-images.githubusercontent.com/37995685/217673331-b303ad32-4f9e-439c-bae9-7801565cf978.png)
 
 예전에는 메모리에 한 개의 프로그램만 로딩해서 사용 후 버리고 로딩하고 함..
 
@@ -136,7 +139,7 @@ CPU가 실행할 processes을 선택하는 방법
 
 ## Opertaions mode
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%208.png)
+![Untitled 8](https://user-images.githubusercontent.com/37995685/217673347-1bdfbebe-a7ae-4966-bbd2-5a51ad215e6b.png)
 
 - user mode
 - kernel mode
@@ -152,7 +155,7 @@ CPU가 실행할 processes을 선택하는 방법
 - VMM (Wirtual Machie Manager)
     - VMware, WSL
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%209.png)
+![Untitled 9](https://user-images.githubusercontent.com/37995685/217673357-959c6ae7-05ec-4833-9287-b2e91adab510.png)
 
 CPU 스케줄링 하듯이 VMM에서도 OS 스케줄링..! (context swtiching)
 
@@ -174,7 +177,7 @@ CPU 스케줄링 하듯이 VMM에서도 OS 스케줄링..! (context swtiching)
 
 ## OS Services
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%2010.png)
+![Untitled 10](https://user-images.githubusercontent.com/37995685/217673380-ba805a9f-ec0a-4eeb-9b68-ac22b5cac3ad.png)
 
 ## System Calls
 
@@ -188,7 +191,8 @@ CPU 스케줄링 하듯이 VMM에서도 OS 스케줄링..! (context swtiching)
 
 프로그램이 OS에 인터페이스하기 위해선 System calls을 사용함
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%2011.png)
+![Untitled 11](https://user-images.githubusercontent.com/37995685/217673390-361f8650-ebf0-454d-a9d0-1fcc2d801bdc.png)
+
 
 OS가 제공해주는 서비스들은 System Call을 통해 호출함 = API
 
@@ -196,12 +200,14 @@ OS가 제공해주는 서비스들은 System Call을 통해 호출함 = API
 
 OS의 API = System calls
 
-![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%2012.png)
+![Untitled 12](https://user-images.githubusercontent.com/37995685/217673398-ab901ef7-5569-47db-8a78-c726b7a69381.png)
+
 
 System call interface를 통해서 사용자가 open해서 read, write 등등을 함
 
 → 매번 번거로움… ⇒ 대부분은 library를 제공함
 
 - standard C library
+    ![Untitled 13](https://user-images.githubusercontent.com/37995685/217673420-ba4eea89-71cd-4ee9-8675-a04cfc3f203a.png)
+
     
-    ![Untitled](02%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%8B%E1%85%B4%20%E1%84%80%E1%85%A2%E1%84%82%E1%85%A7%E1%86%B7%E1%84%80%E1%85%AA%20%E1%84%80%E1%85%AE%E1%84%8C%E1%85%A9%20dcf8ffd9717646fe8a90cdc05ddadefd/Untitled%2013.png)
