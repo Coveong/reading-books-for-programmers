@@ -69,11 +69,13 @@
 
 ### 앨런 튜링
 
-![Untitled](01%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A1%20%E1%84%86%E1%85%AF%E1%84%80%E1%85%B5%E1%86%AF%E1%84%85%E1%85%A2%200bfd78a0d8c24431973a438a5ef287fb/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/37995685/217672969-8204704b-7f81-446b-971e-9a5a1a53c1da.png)
+
 
 - 헤드와 테이프가 있으면 이를 가지고 목적을 가진 튜링 머신을 만들 수 있고 이를 똑가팅 따라하는 유니버설 튜링 머신을 가질 수 있음
 
-![Untitled](01%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A1%20%E1%84%86%E1%85%AF%E1%84%80%E1%85%B5%E1%86%AF%E1%84%85%E1%85%A2%200bfd78a0d8c24431973a438a5ef287fb/Untitled%201.png)
+![Untitled 1](https://user-images.githubusercontent.com/37995685/217672987-befa1977-6c03-4200-a789-fbfffe1f321d.png)
+
 
 이게 현대적으로 넘어오면서 
 
@@ -86,7 +88,7 @@ CPU, RAM, Application Programs, Operating System ⇒ 현대적 컴퓨터의 원�
 
 ### 폰 노이만
 
-![Untitled](01%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A1%20%E1%84%86%E1%85%AF%E1%84%80%E1%85%B5%E1%86%AF%E1%84%85%E1%85%A2%200bfd78a0d8c24431973a438a5ef287fb/Untitled%202.png)
+![Untitled 2](https://user-images.githubusercontent.com/37995685/217673036-01ce141a-4066-4a89-b633-ab07e81ec77f.png)
 
 처음으로 Stored-program(내장형 프로그램)을 도입함
 
@@ -101,7 +103,7 @@ CPU, RAM, Application Programs, Operating System ⇒ 현대적 컴퓨터의 원�
 
 ### 운영체제도 프로그램인가요?
 
-![Untitled](01%20%E1%84%8B%E1%85%AE%E1%86%AB%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%8E%E1%85%A6%E1%84%8C%E1%85%A6%E1%84%80%E1%85%A1%20%E1%84%86%E1%85%AF%E1%84%80%E1%85%B5%E1%86%AF%E1%84%85%E1%85%A2%200bfd78a0d8c24431973a438a5ef287fb/Untitled%203.png)
+![Untitled 3](https://user-images.githubusercontent.com/37995685/217673051-6158d180-ebce-4bb7-8693-9c246a496a7c.png)
 
 운영체제는 프로그램의 일종으로 컴퓨터에서 항상 실행중인 프로그램이다.
 
