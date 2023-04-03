@@ -56,3 +56,60 @@ starvation(기아)의 해결법
 싱글코어에서 접근하지 못하게 막는 방법
 
 인터럽트를 발생하지 못하게 아예 사전에 막아버린다.
+
+### 크리티컬 섹션의 소프트웨어 해결책
+
+Dekker Algorithm
+
+- 2개의 프로세스에 대해서
+
+**EisenBerg & McGurie’s Algorithm**
+
+- n개의 프로세스에 대해서 waitingTime이  n-1을 가지는 알고리즘 입니다.
+
+### Peterson Algorithm
+
+critical-section Solution즉 임계영역에 대한 문제를 가장 완벽하게 해결한 알고리즘
+
+- load and store 아키텍쳐에서 발생하는 알고리즘이다.
+
+해결방법
+
+- 2개의 프로세스라고 했을 때 크리티컬 섹션으로 이동했다가  나머지 섹션으로 이동했다.
+
+```jsx
+while(ture) {
+flag[i] = true
+turn = j
+while(flag[j]&&ture ==j) 
+/* critical section */
+flag[i] = false;
+/* remainder section */
+}
+int turn;
+boolean flag[2]
+
+```
+
+코드로 구현해보았을때..
+
+해결이 되지 않는다.. 왜? ( 자세한 내용은 강의와 서적 참고)
+
+- no guarantees that…(?)
+- 기계어 레벨로 생각을 해보아야 한다.
+- 피터슨 솔루션은 권한적인 부분을 정확히 해야 제대로 동작하게 만들어 졌다.
+- 그래서 알고리즘의 개념, 증명적으로는 훌륭한다.(데드락, 한계 대기 등)
+
+하지만 hardware의 지원도 필요하다.
+
+csp(critical section problme)을 푸는데 지원을 해줄수 있는데
+
+- 하드웨어에서 동기화 지침을 제공해주면 좋고
+- 하드웨어를 방법을 제공하는데 필요한 하나의 도구로 생각해서 사용할수도 있다.
+
+3가지 원시적인 방법이 있다.
+
+- 메모리 배리어 , 메모리 팬스
+- 하드웨어 지침서
+- 원자성있는 변수
+    - 말하는 원자 → 더이상 쪼갤수 없는 변수
