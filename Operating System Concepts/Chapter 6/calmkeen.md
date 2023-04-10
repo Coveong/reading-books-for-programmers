@@ -113,3 +113,45 @@ csp(critical section problme)을 푸는데 지원을 해줄수 있는데
 - 하드웨어 지침서
 - 원자성있는 변수
     - 말하는 원자 → 더이상 쪼갤수 없는 변수
+
+## CSP를 해결하기 위한 software  Tool
+
+Mutex Locks :  동기화 해결을 위한 가장 심플한 툴
+
+Semaphore : n개에서더 좋고,편리하고 효과적인 툴
+
+Monitor:  Mutex locks와 Semaphore를 해결하는 툴
+
+Liveness: 프로세스의 동작을 보장 → 데드락 해결
+
+### MutexLcok
+
+mutex :상호 배재
+
+크리티컬 섹션을 보호하고 race condition을 예방해 준다.
+
+프로세스는 열쇠를통해서 진입하고 나온다. → 열쇠를 통해 크리티컬 섹션에 들어가고 나오며, 이를 통해 크리티컬 섹션을 하나의 프로세스만 동작할수 있게 해준다.( 교착 방지 )
+
+### Busy waiting
+
+프로세스가 critical section에 접근하기 위해서 계속 시도를 함 → 무한루프 → cpu소모로 이어짐(계속 쓸데없는 접근 , 블락이 계속되기때문)
+
+### Spinlock
+
+MutexLock을 사용해 busy waiting을 하는 경우
+
+이경우가 유용할떄가 있다? → cpu코어가 여러개면 다른 세션에서 계속 루프를 돌다가 끝날경우 바로 섹션에 접근하게 됨 → context switch를 안하게 함 → 시간을 줄여준다.
+
+## Semaphores
+
+신호 장치
+
+초기활르 어떻게 해주냐에 따라   (Proberen - to test)P()  와 (Verhogen - to increment) V(),혹은wait() and signal()이라고 한다.
+
+- Mutex lock처럼 키 방식이 아닌 일정 값의 추가 감소로 구분한다.
+
+특징
+
+- 여러개의 인스턴스를 가진 자원에 쓰기 용이하다.
+- wait를주고 어떤 Semaphore에서 사용하는지 가르쳐주면 값을 감소시키면서 Semaphore가 언제 끝나는지 기다린다
+- 그리고 프로세스의 릴리즈를 확인하면  sinal로 증가신다.
