@@ -155,3 +155,82 @@ MutexLock을 사용해 busy waiting을 하는 경우
 - 여러개의 인스턴스를 가진 자원에 쓰기 용이하다.
 - wait를주고 어떤 Semaphore에서 사용하는지 가르쳐주면 값을 감소시키면서 Semaphore가 언제 끝나는지 기다린다
 - 그리고 프로세스의 릴리즈를 확인하면  sinal로 증가신다.
+
+## Monitors
+
+Semaphore는 편리하고 효과적이지만 타이밍 에러가 자주 발생한다.
+
+- semaphore를 1로 초기화 하고  wait하기전에 signal을 보내면 문제가 된다.
+
+이를 문제되지 않게 하기 위해
+
+- 고급진 모니터( high Level- language)를 사용한다.
+
+Monitor type이란건 ADT(abstract data type)로써 mutual exclusion(상호배제)을 제공해주는 하나의 클래스라고 이해하면 좋다.
+
+변수를 선언하고 정의된 함수를 호출하게 해준다.
+
+```jsx
+class Monitor() {
+func p1(){}
+func p2(){}
+frunc pn(){}
+}
+```
+
+Conditionalm Variables
+
+모니터가 의 부족한 점을  condition이라는 친구로 보안해준다.
+
+```jsx
+condition x, y;
+x.wait()
+x.signal()
+```
+
+### java Monitors
+
+자바에서는 유사한 기능으로  monitor like을 사용한다.
+
+synchronized keyword 
+
+자바에서 쓰는 코드 블록선억 키워드
+
+ 임계영역에 모니터락을 획득해야 진입 가능하게 한다.
+
+모니터락을 가진 객체를 지정할수 있다.
+
+```jsx
+synchronized(object){/* critical section*/}
+
+public synchronized void add() {}
+```
+
+## Liveness
+
+progress(deadLock)와 bounded-waiting(한계대기)를 해결해 주는 것
+
+deadLock & priortity inversion(우선순위 역전)
+
+### DeadLock
+
+waiting Queue에 있는 프로그래스만 실행시려고 했을때 영원히 기다리는 상황이 된다.
+
+```jsx
+
+p0
+wait(s) wait(Q)
+위 두개가 순서대로 있어야 cs(critical section)에 들어갈수 있고 나올때도
+signal(S),Signal(Q)로 나와야한다.
+그런데
+p1
+wait(Q)wait(S)에서 qs로 하면 p0에서 SQ순서로 호출하면 둘다 서로를 기다리게 된다...
+```
+
+### priority inversion
+
+우선순위가 높은 프로세스가 낮은 프로세스에 밀리는 현상
+
+해결방법
+
+- priority-inheritance - 우선순위 상속
