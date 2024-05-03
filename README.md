@@ -70,13 +70,14 @@
 - [단위 테스트 | 생산성과 품질을 위한 단위 테스트 원칙과 패턴](http://www.yes24.com/Product/Goods/104084175) - 블라디미르 코리코프
 
 ## 읽고 있는 책
-- [리팩터링 2판 | 코드 구조를 체계적으로 개선하여 효율적인 리팩터링 구현하기](https://www.yes24.com/Product/Goods/89649360) - 마틴 파울러
+- [켄트 벡의 Tidy First? | 더 나은 소프트웨어 설계를 위한 32가지 코드 정리법](https://www.yes24.com/Product/Goods/125921718) - 켄트 벡
 
 ## 보류한 책
 - [클린 소프트웨어 | 애자일 원칙과 패턴, 그리고 실천 방법](http://www.yes24.com/Product/Goods/39497990) - 로버트 C. 마틴
 - [한 권으로 읽는 컴퓨터 구조와 프로그래밍](https://book.naver.com/bookdb/book_detail.nhn?bid=18866504) - 조너선 스타인하트
 - [Operating System Concepts 10th Ed](http://www.yes24.com/Product/Goods/78225791) - Siberschatz et. al
   - [인프런 - 운영체제 공룡책 강의](https://www.inflearn.com/course/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B3%B5%EB%A3%A1%EC%B1%85-%EC%A0%84%EA%B3%B5%EA%B0%95%EC%9D%98#curriculum)와 함께
+- [리팩터링 2판 | 코드 구조를 체계적으로 개선하여 효율적인 리팩터링 구현하기](https://www.yes24.com/Product/Goods/89649360) - 마틴 파울러
 
 
 ## 앞으로 읽을 책
