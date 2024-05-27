@@ -68,9 +68,12 @@
 - [읽기 좋은 코드가 좋은 코드다 | 더 나은 코드를 작성하는 간단하고 실전적인 테크닉](https://book.naver.com/bookdb/book_detail.nhn?bid=6871807) - 더스틴 보즈웰, 트레버 파우커
 - [엘레강트 오브젝트 | 새로운 관점에서 바라본 객체지향](https://book.naver.com/bookdb/book_detail.nhn?bid=17651286) - Yegor Bugayenko
 - [단위 테스트 | 생산성과 품질을 위한 단위 테스트 원칙과 패턴](http://www.yes24.com/Product/Goods/104084175) - 블라디미르 코리코프
+- [켄트 벡의 Tidy First? | 더 나은 소프트웨어 설계를 위한 32가지 코드 정리법](https://www.yes24.com/Product/Goods/125921718) - 켄트 벡
+
 
 ## 읽고 있는 책
-- [켄트 벡의 Tidy First? | 더 나은 소프트웨어 설계를 위한 32가지 코드 정리법](https://www.yes24.com/Product/Goods/125921718) - 켄트 벡
+- ⌛️
+
 
 ## 보류한 책
 - [클린 소프트웨어 | 애자일 원칙과 패턴, 그리고 실천 방법](http://www.yes24.com/Product/Goods/39497990) - 로버트 C. 마틴
